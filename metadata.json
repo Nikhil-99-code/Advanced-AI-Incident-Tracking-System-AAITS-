@@ -1,0 +1,5 @@
+{
+  "name": "Advanced AI Incident Tracking System(AAITS)",
+  "description": "An accessible, AI-powered dashboard for urban crisis management, utilizing Gemini for real-time incident analysis and resource dispatch logic.",
+  "requestFramePermissions": []
+}
