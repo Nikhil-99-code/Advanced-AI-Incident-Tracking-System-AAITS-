@@ -275,6 +275,35 @@ export const Dashboard: React.FC = () => {
                     {selectedIncident.aiAnalysis ? (
                         <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
                             
+                            {/* Maps Grounding Result - With Fallback */}
+                            <a 
+                                href={selectedIncident.aiAnalysis.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedIncident.location + ' ' + selectedIncident.type + ' San Francisco')}`} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className={`flex items-center gap-3 p-3 border rounded-lg transition-all group ${
+                                    selectedIncident.aiAnalysis.googleMapsUrl 
+                                    ? 'bg-gray-700/50 border-gray-600 hover:border-blue-500 hover:bg-gray-700' 
+                                    : 'bg-gray-800/50 border-gray-700 hover:border-gray-500 hover:bg-gray-800'
+                                }`}
+                            >
+                                <div className={`p-2 rounded-full transition-colors ${
+                                    selectedIncident.aiAnalysis.googleMapsUrl
+                                    ? 'bg-blue-900/30 text-blue-400 group-hover:bg-blue-600 group-hover:text-white'
+                                    : 'bg-gray-700 text-gray-400 group-hover:bg-gray-600 group-hover:text-gray-200'
+                                }`}>
+                                    <Icon name="map" size={18} />
+                                </div>
+                                <div>
+                                    <p className={`text-sm font-bold ${selectedIncident.aiAnalysis.googleMapsUrl ? 'text-gray-200' : 'text-gray-400'}`}>
+                                        {selectedIncident.aiAnalysis.googleMapsUrl ? 'View Verified Location' : 'Locate on Maps'}
+                                    </p>
+                                    <p className="text-xs text-gray-400">
+                                        {selectedIncident.aiAnalysis.googleMapsUrl ? 'Location verified by Gemini' : 'External Search'}
+                                    </p>
+                                </div>
+                                <Icon name="search" size={14} className="ml-auto text-gray-500 group-hover:text-white" />
+                            </a>
+
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="bg-gray-900/50 rounded-lg p-3 border border-gray-700">
                                     <h4 className="text-xs text-yellow-500 uppercase tracking-wide mb-2">Recommended Units</h4>

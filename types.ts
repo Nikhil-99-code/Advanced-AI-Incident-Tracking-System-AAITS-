@@ -18,6 +18,7 @@ export interface Incident {
     summary: string;
     recommendedUnits: string[];
     riskFactors: string[];
+    googleMapsUrl?: string;
   };
 }
 
